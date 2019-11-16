@@ -12,6 +12,10 @@ export class AddpresComponent implements OnInit {
   presupuestoForm: FormGroup;
   presupuesto: any;
   proveedores: any;
+  base: any;
+  tipo: any;
+  iva = 0;
+  total = 0;
 
   constructor(private pf: FormBuilder, private proveedoresService: ProveedoresService) { }
 
@@ -22,11 +26,12 @@ export class AddpresComponent implements OnInit {
       concepto: ['', Validators.required],
       base: ['', Validators.required],
       tipo: ['', Validators.required],
-      iva: ['', Validators.required],
-      total: ['', Validators.required]
+      iva: this.iva,
+      total: this.total
     });
 
     this.proveedores = this.proveedoresService.getProveedores();
+    this.onChanges();
   }
 
   onSubmit() {
@@ -44,6 +49,15 @@ export class AddpresComponent implements OnInit {
       total: this.presupuestoForm.get('total').value,
     };
     return savePresupuesto;
+  }
+
+  onChanges() {
+    this.presupuestoForm.valueChanges.subscribe(valor => {
+      this.base = valor.base;
+      this.tipo = valor.tipo;
+      this.presupuestoForm.value.iva = this.base * this.tipo;
+      this.presupuestoForm.value.total = this.base + (this.base * this.tipo);
+    });
   }
 
 }

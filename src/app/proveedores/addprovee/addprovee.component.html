@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+    <h2>Añadir nuevo proveedor</h2>
+    <form (ngSubmit)="onSubmit()" #formpro="ngForm">
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" ngModel name="nombre" id="nombre" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="cif">C.I.F</label>
+        <input type="text" ngModel name="cif" id="cif" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="direccion">Direccion</label>
+        <input type="text" ngModel name="direccion" id="direccion" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="cp">Código Postal</label>
+        <input type="text" ngModel name="cp" id="cp" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="localidad">Localidad</label>
+        <input type="text" ngModel name="localidad" id="localidad" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="provincia">Provincia</label>
+        <select ngModel name="provincia" id="provincia" class="form-control">
+          <option value="">Seleccione la provincia</option>
+          <option *ngFor="let provincia of provincias" [value]="provincia">{{provincia}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="telefono">Teléfono</label>
+        <input type="number" ngModel name="telefono" id="telefono" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="email">Correo Electrónico</label>
+        <i class="fa fa-check-circle check" *ngIf="email.valid"></i>
+        <i class="fa fa-exclamation-circle uncheck" *ngIf="email.invalid && email.touched"></i>
+        <input type="email" ngModel name="email" id="email" class="form-control" required email #email="ngModel">
+        <p class="alert alert-danger" *ngIf="email.invalid && email.touched">Por favor introduzca una dirección de
+          correo correcta</p>
+      </div>
+      <div class="form-group">
+        <label for="contacto">Persona de Contacto</label>
+        <input type="text" ngModel name="contacto" id="contacto" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="!formpro.valid">Añadir Proveedor</button>
+      <p class="alet alert-danger" *ngIf="!formpro.valid">Por favor complete todos los campos</p>
+      <!-- <hr>
+      <pre>Estado dirty:{{formpro.controls.email.dirty}} </pre>
+      <pre>Estado pristine:{{formpro.controls.email.pristine}} </pre>
+      <pre>Estado touched:{{formpro.controls.email.touched}} </pre>
+      <pre>Estado valid:{{formpro.controls.email.valid}} </pre>
+      <pre>Estado invalid:{{formpro.controls.email.invalid}} </pre> -->
+    </form>
+    <hr>
+    <pre> {{proveedor | json}} </pre>
+  </div>
+</div>

@@ -1,6 +1,8 @@
 <div class="row">
   <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
     <h2>Añadir nuevo presupuesto</h2>
+    <a class="btn btn-primary float-md-right" [routerLink]="['/presupuestos']">Regresar al listado</a>
+    <br>
 
     <form [formGroup]="presupuestoForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
@@ -44,6 +46,7 @@
           [(ngModel)]="presupuestoForm.value.total" disabled>
       </div>
       <button class="btn btn-primary" type="submit" [disabled]="!presupuestoForm.valid">Añadir Presupuesto</button>
+      <a class="btn btn-danger" routerLink="/presupuestos">Cancelar</a>
       <p class="alert-danger alert" *ngIf="!presupuestoForm.valid">Por favor complete todos los campos</p>
     </form>
 

@@ -25,4 +25,12 @@ export class PresupuestosService {
       })
     );
   }
+
+  getPresupuestos() {
+    return this.http.get(this.presURL).pipe(
+      map(res => {
+        console.log(res);
+        return res;
+      }));
+  }
 }

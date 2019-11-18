@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+      <h4>Introduzca sus datos de registro </h4>
+      <label for="inputEmail">Correo Electrónico</label>
+      <input type="email" name="inputEmail" id="inputEmail" class="form-control" formControlName="email" required
+        autofocus>
+      <p class="alert alert-danger" *ngIf="erroresForm.email">{{erroresForm.email}} </p>
+      <label for="inputPassword">Contraseña</label>
+      <input type="password" name="inputPassword" id="inputPassword" class="form-control" formControlName="password"
+        required>
+      <p class="alert alert-danger" *ngIf="erroresForm.password">{{erroresForm.password}} </p>
+      <hr>
+      <button type="submit" class="btn btn-primary" [disabled]="!registroForm.valid">Registrar</button>
+    </form>
+  </div>
+</div>

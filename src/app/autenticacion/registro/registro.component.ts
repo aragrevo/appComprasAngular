@@ -24,7 +24,7 @@ export class RegistroComponent implements OnInit {
     },
     password: {
       required: 'Contraseña obligatoria',
-      // pattern: 'La contraseña debe tener al menos una letra y un número',
+      pattern: 'La contraseña debe tener al menos una letra y un número',
       minlength: 'y más de 6 caracteres'
     }
   };
@@ -44,7 +44,7 @@ export class RegistroComponent implements OnInit {
       ],
       password: ['', [
         Validators.required,
-        // Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z0-9]+)$'),
+        Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
         Validators.minLength(6)
       ]]
     });

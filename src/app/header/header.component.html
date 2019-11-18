@@ -16,10 +16,10 @@
         <a class="nav-link" routerLink="/presupuestos">Presupuesto</a>
       </li>
       <li class="nav-item" routerLinkActive="active" *ngIf="!isAuth()">
-        <button class="btn btn-primary float-md-right" routerLink="/iniciosesion">Inicie Sesión</button>
+        <button class="btn btn-outline-primary float-md-right" routerLink="/iniciosesion">Inicie Sesión</button>
       </li>
       <li class="nav-item" routerLinkActive="active" *ngIf="isAuth()">
-        <button class="btn btn-primary float-md-right" (click)="onLogout()">Cerrar Sesión</button>
+        <button class="btn btn-outline-primary float-md-right" (click)="onLogout()">Cerrar Sesión</button>
       </li>
     </ul>
   </div>

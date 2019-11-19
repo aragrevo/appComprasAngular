@@ -3,3 +3,33 @@
     <h1 class="display-3">Bienvenido a nuestra aplicación de Compras App</h1>
   </div>
 </div>
+<div class="text-center" style="margin: 20px;" *ngIf="!isAuth()">
+  <h4>Inicie sesión para acceder</h4>
+</div>
+
+<div class="card-deck" *ngIf="isAuth()">
+  <div class="card bg-info">
+    <a routerLink="/proveedores" style="text-decoration: none;" class="text-white">
+      <i class="card-img-top fa fa-address-book-o text-center mt-4" style="font-size: 60px;"></i>
+      <div class="card-body">
+        <h4 class="card-title text-center">Proveedores</h4>
+      </div>
+    </a>
+  </div>
+  <div class="card bg-warning">
+    <a routerLink="/presupuestos" style="text-decoration: none;" class="text-white">
+      <i class="card-img-top fa fa-address-book-o text-center mt-4" style="font-size: 60px;"></i>
+      <div class="card-body">
+        <h4 class="card-title text-center">Presupuestos</h4>
+      </div>
+    </a>
+  </div>
+  <div class="card bg-secondary">
+    <a routerLink="/facturas" style="text-decoration: none;" class="text-white">
+      <i class="card-img-top fa fa-address-book-o text-center mt-4" style="font-size: 60px;"></i>
+      <div class="card-body">
+        <h4 class="card-title text-center">Facturas</h4>
+      </div>
+    </a>
+  </div>
+</div>

@@ -9,6 +9,7 @@ import { PresupuestosService } from '../../servicios/presupuestos.service';
 export class PresupuestosComponent implements OnInit {
 
   presupuestos: any[] = [];
+  cargando = true;
 
   constructor(private presupuestosService: PresupuestosService) {
     this.presupuestosService.getPresupuestos().subscribe(presupuestos => {
@@ -18,6 +19,7 @@ export class PresupuestosComponent implements OnInit {
         p.id$ = id$;
         this.presupuestos.push(presupuestos[id$]);
       }
+      this.cargando = false;
     });
   }
 

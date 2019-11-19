@@ -1,31 +1,38 @@
 <h3>Listado de Presupuestos</h3>
 <a class="btn btn-primary float-md-right" [routerLink]="['/addpres']">Añadir nuevo Presupuesto</a>
 <br>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Proveedor</th>
-      <th>Fecha</th>
-      <th>Concepto</th>
-      <th>Base</th>
-      <th>IVA</th>
-      <th>Total</th>
-      <th class="text-right">Editar</th>
-      <th class="text-right">Eliminar</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let presupuesto of presupuestos">
-      <td>{{presupuesto.proveedor}} </td>
-      <td>{{presupuesto.fecha}} </td>
-      <td>{{presupuesto.concepto}} </td>
-      <td>{{presupuesto.base}} </td>
-      <td>{{presupuesto.iva}} </td>
-      <td>{{presupuesto.total}} </td>
-      <td class="text-right"><button type="button" class="btn btn-success"
-          routerLink="/editpres/{{presupuesto.id$}}">Editar</button></td>
-      <td class="text-right"><button type="button" class="btn btn-danger"
-          (click)="eliminarPresupuesto(presupuesto.id$)">Eliminar</button></td>
-    </tr>
-  </tbody>
-</table>
+<div *ngIf="cargando" class="text-center" style="padding-top: 60px;">
+  <div class="spinner-border text-primary" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+<div *ngIf="!cargando">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Proveedor</th>
+        <th>Fecha</th>
+        <th>Concepto</th>
+        <th>Base</th>
+        <th>IVA</th>
+        <th>Total</th>
+        <th class="text-right">Editar</th>
+        <th class="text-right">Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let presupuesto of presupuestos">
+        <td>{{presupuesto.proveedor}} </td>
+        <td>{{presupuesto.fecha}} </td>
+        <td>{{presupuesto.concepto}} </td>
+        <td>{{presupuesto.base}} </td>
+        <td>{{presupuesto.iva}} </td>
+        <td>{{presupuesto.total}} </td>
+        <td class="text-right"><button type="button" class="btn btn-success"
+            routerLink="/editpres/{{presupuesto.id$}}">Editar</button></td>
+        <td class="text-right"><button type="button" class="btn btn-danger"
+            (click)="eliminarPresupuesto(presupuesto.id$)">Eliminar</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
